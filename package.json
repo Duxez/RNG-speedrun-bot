@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "scripts": {
       "start": "node index.js"
+  },
+  "dependencies": {
+      "axios": "0.18.0",
+      "discord.js": "11.4.2"
   }
 }
