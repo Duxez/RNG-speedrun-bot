@@ -214,12 +214,14 @@ function roll(msg, games)
             }
         }});
 
-        fs.appendFile('./alreadyplayed.txt', name, function(err) {
+        fs.appendFile('./alreadyplayed.txt', name + "\r\n", function(err) {
             if(err)
                 console.log(err);
                 
             console.log("successfully wrote game to file");
         });
+    }).catch((err) => {
+        console.log(err);
     });
 }
 
