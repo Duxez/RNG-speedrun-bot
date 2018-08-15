@@ -30,199 +30,200 @@ function roll(msg, games)
 {
     let platform = Math.floor(Math.random() * games.length);
     const chosenGame = games[Math.floor(Math.random() * games.length)];
-    axios.get(baseurl + '/games/' + chosenGame).then((json) => {
-        let name = json.data.data.names.international;
-        let alreadyPlayed = false;
-        let played = fs.readFileSync('./alreadyplayed.txt').toString('utf-8').split("\r\n");
-        for(let i = 0; i < played.length; i++)
-        {
-            if(played[i] === name)
-                alreadyPlayed = true;
-        }
-        if(name === undefined || json.data.data.ruleset["emulators-allowed"] === false || alreadyPlayed)
-        {
-            roll(msg, games);
-            return;
-        }
+    console.log(chosenGame);
+    // axios.get(baseurl + '/games/' + chosenGame).then((json) => {
+    //     let name = json.data.data.names.international;
+    //     let alreadyPlayed = false;
+    //     let played = fs.readFileSync('./alreadyplayed.txt').toString('utf-8').split("\r\n");
+    //     for(let i = 0; i < played.length; i++)
+    //     {
+    //         if(played[i] === name)
+    //             alreadyPlayed = true;
+    //     }
+    //     if(name === undefined || json.data.data.ruleset["emulators-allowed"] === false || alreadyPlayed)
+    //     {
+    //         roll(msg, games);
+    //         return;
+    //     }
 
-        let platforms = "";
-        for(let i = 0; i < json.data.data.platforms.length; i++)
-        {
-            let comma = true;
-            switch(json.data.data.platforms[i])
-            {
-                case "8gejmne3":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Amiga";
-                    break;
-                case "vm9vn63k":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Arcade";
-                    break;
-                case "o0644863":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Atari 2600";
-                    break;
-                case "gz9qox60":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Commodore 64";
-                    break;
-                case "v06d394z":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Dreamcast";
-                    break;
-                case "mr6k409z":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Famicom Disk System";
-                    break;
-                case "gz9qkx90":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Game & Watch";
-                    break;
-                case "n5683oev":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Game Boy";
-                    break;
-                case "3167d6q2":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Game Boy Advance";
-                    break;
-                case "gde3g9k1":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Game Boy Color";
-                    break;
-                case "w89rwelk":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Nintendo 64";
-                    break;
-                case "7g6m8erk":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Nintendo DS";
-                    break;
-                case "jm95z9ol":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "NES";
-                    break;
-                case "wxeod9rn":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Playstation 1";
-                    break;                                        
-                case "5negk9y7":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Playstation Portable";
-                    break;
-                case "31670d9q":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Sega CD";
-                    break;                                
-                case "w89r3w9l":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Sega Game Gear";
-                    break;
-                case "mr6k0ezw":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Sega Genesis";
-                    break;
-                case "83exwk6l":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Sega Master System";
-                    break;
-                case "lq60l642":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "Sega Saturn";
-                    break;
-                case "83exk6l5":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "SNES";
-                    break;
-                case "n568zo6v":
-                    if(i !== 0 && platforms !== "")
-                        platforms += ", "
-                    platforms += "ZX Spectrum";
-                    break;
-                default:
-                    comma = false;
-                    break;
-            }
+    //     let platforms = "";
+    //     for(let i = 0; i < json.data.data.platforms.length; i++)
+    //     {
+    //         let comma = true;
+    //         switch(json.data.data.platforms[i])
+    //         {
+    //             case "8gejmne3":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Amiga";
+    //                 break;
+    //             case "vm9vn63k":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Arcade";
+    //                 break;
+    //             case "o0644863":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Atari 2600";
+    //                 break;
+    //             case "gz9qox60":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Commodore 64";
+    //                 break;
+    //             case "v06d394z":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Dreamcast";
+    //                 break;
+    //             case "mr6k409z":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Famicom Disk System";
+    //                 break;
+    //             case "gz9qkx90":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Game & Watch";
+    //                 break;
+    //             case "n5683oev":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Game Boy";
+    //                 break;
+    //             case "3167d6q2":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Game Boy Advance";
+    //                 break;
+    //             case "gde3g9k1":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Game Boy Color";
+    //                 break;
+    //             case "w89rwelk":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Nintendo 64";
+    //                 break;
+    //             case "7g6m8erk":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Nintendo DS";
+    //                 break;
+    //             case "jm95z9ol":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "NES";
+    //                 break;
+    //             case "wxeod9rn":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Playstation 1";
+    //                 break;                                        
+    //             case "5negk9y7":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Playstation Portable";
+    //                 break;
+    //             case "31670d9q":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Sega CD";
+    //                 break;                                
+    //             case "w89r3w9l":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Sega Game Gear";
+    //                 break;
+    //             case "mr6k0ezw":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Sega Genesis";
+    //                 break;
+    //             case "83exwk6l":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Sega Master System";
+    //                 break;
+    //             case "lq60l642":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "Sega Saturn";
+    //                 break;
+    //             case "83exk6l5":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "SNES";
+    //                 break;
+    //             case "n568zo6v":
+    //                 if(i !== 0 && platforms !== "")
+    //                     platforms += ", "
+    //                 platforms += "ZX Spectrum";
+    //                 break;
+    //             default:
+    //                 comma = false;
+    //                 break;
+    //         }
 
-            // if(i < json.data.data.platforms.length - 1 && comma)
-            //     platforms += ", ";
-        }
+    //         // if(i < json.data.data.platforms.length - 1 && comma)
+    //         //     platforms += ", ";
+    //     }
 
-        let date = new Date();
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        let startDate = year + "-" + month + "-" + day;
-        let newDay = date.getDate() + 7;
-        let endDate = new Date();
-        endDate.setDate(newDay);
-        let endYear = endDate.getFullYear();
-        let endMonth = endDate.getMonth() + 1;
-        let endDay = endDate.getDate();
-        let endDateString = endYear + "-" + endMonth + "-" + endDay;
+    //     let date = new Date();
+    //     let year = date.getFullYear();
+    //     let month = date.getMonth() + 1;
+    //     let day = date.getDate();
+    //     let startDate = year + "-" + month + "-" + day;
+    //     let newDay = date.getDate() + 7;
+    //     let endDate = new Date();
+    //     endDate.setDate(newDay);
+    //     let endYear = endDate.getFullYear();
+    //     let endMonth = endDate.getMonth() + 1;
+    //     let endDay = endDate.getDate();
+    //     let endDateString = endYear + "-" + endMonth + "-" + endDay;
         
-        msg.channel.send({embed: {
-            color: 10980551,
-            title: name,
-            "image": {
-                "url": json.data.data.assets["cover-medium"].uri
-            },
-            fields: [
-                {
-                    name: "Week",
-                    value: startDate + " till " + endDateString
-                },
-                {
-                    name: "Release date",
-                    value: json.data.data.released
-                }, 
-                {
-                    name: "Platform",
-                    value: platforms
-                },
-                {
-                    name: "Speedrun.com link",
-                    value: json.data.data.weblink                                                
-                },
-            ],
+    //     msg.channel.send({embed: {
+    //         color: 10980551,
+    //         title: name,
+    //         "image": {
+    //             "url": json.data.data.assets["cover-medium"].uri
+    //         },
+    //         fields: [
+    //             {
+    //                 name: "Week",
+    //                 value: startDate + " till " + endDateString
+    //             },
+    //             {
+    //                 name: "Release date",
+    //                 value: json.data.data.released
+    //             }, 
+    //             {
+    //                 name: "Platform",
+    //                 value: platforms
+    //             },
+    //             {
+    //                 name: "Speedrun.com link",
+    //                 value: json.data.data.weblink                                                
+    //             },
+    //         ],
 
-            footer: {
-            icon_url: 'https://cdn.discordapp.com/avatars/478586169865535488/7ac94aaf8d5e7456f8bda2f0629c06cf.png?size=128',
-            text: "Bot made by Job Rapati and Seydie."
-            }
-        }});
+    //         footer: {
+    //         icon_url: 'https://cdn.discordapp.com/avatars/478586169865535488/7ac94aaf8d5e7456f8bda2f0629c06cf.png?size=128',
+    //         text: "Bot made by Job Rapati and Seydie."
+    //         }
+    //     }});
 
-        fs.appendFile('./alreadyplayed.txt', name + "\r\n", function(err) {
-            if(err)
-                console.log(err);
+    //     fs.appendFile('./alreadyplayed.txt', name + "\r\n", function(err) {
+    //         if(err)
+    //             console.log(err);
                 
-            console.log("successfully wrote game to file");
-        });
-    }).catch((err) => {
-        console.log(err);
-    });
+    //         console.log("successfully wrote game to file");
+    //     });
+    // }).catch((err) => {
+    //     console.log(err);
+    // });
 }
 
 client.login('NDc4NTg2MTY5ODY1NTM1NDg4.DlM4GQ.HXSrnqESttDNoyeCEwtpQSvRWNo');
