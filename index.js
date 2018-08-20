@@ -22,7 +22,7 @@ client.on('message', msg => {
         let games = gamestext.split("\r\n");
         roll(msg, games);
     }
-    if(msg.content === '!funroll' && msg.channel.id === 'bot-playground')
+    if(msg.content === '!funroll' && msg.channel.id === '480450456124915727')
     {
         let gamestext = fs.readFileSync('./games.txt').toString('utf-8');
         let games = gamestext.split("\r\n");
