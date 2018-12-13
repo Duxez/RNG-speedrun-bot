@@ -402,4 +402,4 @@ function funroll(msg, games)
     });
 }
 
-client.login('NDc4NTg2MTY5ODY1NTM1NDg4.DlM4GQ.HXSrnqESttDNoyeCEwtpQSvRWNo');
+client.login('');
